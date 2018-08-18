@@ -1,0 +1,27 @@
+import java.sql.*; 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+public class newproject {
+ 
+  
+void show(){  
+try{  
+Class.forName("com.mysql.jdbc.Driver");  
+Connection con=DriverManager.getConnection(  
+"jdbc:mysql://localhost/regi","root","");  
+ 
+Statement stmt=con.createStatement();  
+ResultSet rs=stmt.executeQuery("select * from db");  
+while(rs.next())  
+System.out.println(rs.getString(1)+"  "+rs.getString(2));  
+con.close();  
+}catch(Exception e){ System.out.println(e);}  
+}  
+  
+public static void main(String args[])
+{
+	newproject n=new newproject();
+	n.show();
+}
+}
